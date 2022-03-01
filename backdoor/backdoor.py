@@ -1,6 +1,19 @@
 import socket 
 import time
 
+def reliable_send(data):
+	jsondata = json.dumps(data)
+	s.send(jsondata.encode())
+	
+def reliable_recv():
+	data = ''
+	while True:
+		try:
+			data = data + s.recv(1024).decode().rstrip()
+			return json.loads(data)
+		except ValueError:
+			continue
+
 def connection():
 	while True:
 		time.sleep(20)
